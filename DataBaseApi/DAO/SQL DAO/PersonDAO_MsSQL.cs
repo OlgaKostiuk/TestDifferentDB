@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,12 @@ namespace DataBaseApi
         SqlConnection connection = null;
         public PersonDAO_MsSQL()
         {
-            string strConn = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
-                             @"AttachDbFilename=E:\C# 1708\DataBase\DataBaseApi\DataBase\LocalDB.mdf;" +
-                             @"Integrated Security=True";
+            string strConn = @"Data Source=(LocalDB)\MSSQLLocalDB" +
+                             @";AttachDbFilename=" + Path.GetFullPath(@"..\..\..\DataBaseApi\DataBase\LocalDB.mdf") +
+                             @";Integrated Security=True";
+            //string absStrConn = @"Data Source=(LocalDB)\MSSQLLocalDB;" +
+            //                 @"AttachDbFilename=" + @"D:\ORT\ORT_all\Database_App\7\DataBase\DataBaseApi\DataBase\LocalDB.mdf" + ";" +
+            //                 @"Integrated Security=True";
 
             connection = new SqlConnection(strConn);
         }
